@@ -181,9 +181,11 @@ export function Team() {
     },
   };
 
+  const isMobileDevice = typeof window !== "undefined" && window.innerWidth < 768;
+
   const ctaVariants: Variants = {
-    initial: { y: 20, opacity: 0 },
-    animate: { y: 20, opacity: 0 },
+    initial: { y: isMobileDevice ? 0 : 20, opacity: isMobileDevice ? 1 : 0 },
+    animate: { y: isMobileDevice ? 0 : 20, opacity: isMobileDevice ? 1 : 0 },
     hover: {
       y: 0,
       opacity: 1,
@@ -226,7 +228,7 @@ export function Team() {
           <div className="h-[3px] w-full bg-gradient-to-r from-sunset via-coral to-sunset rounded-t-3xl sm:col-span-2" />
 
           {/* Photo */}
-          <div className="relative h-80 sm:h-auto">
+          <div className="relative h-64 sm:h-auto">
             <img
               src={AnasPhoto}
               alt="Muhammed Anas KU — Founder of Ryna International"

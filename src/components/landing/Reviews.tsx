@@ -184,20 +184,20 @@ export function Reviews() {
           </motion.a>
         </div>
 
-        {/* 3x2 Grid Layout of Google Reviews */}
+        {/* 3x2 Grid Layout of Google Reviews with mobile snap scrolling */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className="flex md:grid overflow-x-auto md:overflow-x-visible snap-x snap-mandatory scrollbar-none gap-6 md:grid-cols-2 lg:grid-cols-3 pb-6 md:pb-0"
         >
           {mockReviews.map((review) => (
             <motion.div
               key={review.id}
               variants={cardVariants}
               whileHover={{ y: -6 }}
-              className="group relative flex flex-col justify-between p-6 rounded-2xl border border-border/40 glass-liquid hover:border-coral/30 hover:shadow-soft transition-all duration-500"
+              className="group relative flex flex-col justify-between p-6 rounded-2xl border border-border/40 glass-liquid hover:border-coral/30 hover:shadow-soft transition-all duration-500 flex-shrink-0 w-[290px] xs:w-[320px] sm:w-[350px] md:w-auto snap-center md:snap-none"
             >
               {/* Card top details */}
               <div>
@@ -244,6 +244,15 @@ export function Reviews() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile Swipe Indicator */}
+        <div className="md:hidden flex items-center justify-center gap-2 mt-2 text-[10px] text-foreground/50 tracking-[0.18em] uppercase font-semibold">
+          <span>Swipe to read reviews</span>
+          <span className="inline-flex gap-1 animate-pulse">
+            <span>&larr;</span>
+            <span>&rarr;</span>
+          </span>
+        </div>
 
         {/* Bottom CTA for Reviews */}
         <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">

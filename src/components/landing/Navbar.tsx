@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/ryna-logo.jpg";
 
 const links = [
@@ -75,23 +76,41 @@ export function Navbar() {
           </button>
         </div>
 
-        {open && (
-          <div className="lg:hidden mt-2 glass rounded-2xl p-4 animate-fade-in">
-            <ul className="flex flex-col gap-3">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-2 text-foreground/85 hover:text-mint"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden mt-2 glass rounded-2xl p-4 overflow-hidden shadow-lg border border-border/40"
+            >
+              <ul className="flex flex-col gap-2.5">
+                {links.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center justify-between py-2.5 px-3 rounded-xl text-foreground/85 hover:text-mint hover:bg-card/50 transition-all duration-200 text-sm font-medium"
+                    >
+                      <span>{l.label}</span>
+                      <ChevronRight size={16} className="text-foreground/40" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 pt-4 border-t border-border/40">
+                <a
+                  href="#contact"
+                  onClick={() => setOpen(false)}
+                  className="flex w-full items-center justify-center rounded-xl bg-gradient-sunset py-3 text-sm font-medium text-foreground shadow-[var(--shadow-glow)] hover:scale-[1.01] active:scale-[0.99] transition-transform"
+                >
+                  Book a Call
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );

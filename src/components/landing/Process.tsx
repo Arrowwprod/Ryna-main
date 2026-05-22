@@ -100,8 +100,9 @@ export function Process() {
     // ── GSAP: stagger-reveal step cards (alternating x-slide) ───────────
     const cards = gsap.utils.toArray<HTMLElement>(".proc-card", track);
     const dots = gsap.utils.toArray<HTMLElement>(".proc-dot", track);
+    const isMobile = window.innerWidth < 768;
 
-    gsap.set(cards, { opacity: 0, x: (i) => (i % 2 === 0 ? -52 : 52), force3D: true });
+    gsap.set(cards, { opacity: 0, x: (i) => (isMobile ? 24 : (i % 2 === 0 ? -52 : 52)), force3D: true });
     gsap.set(dots, { scale: 0, opacity: 0, force3D: true });
 
     cards.forEach((card, i) => {
@@ -168,12 +169,12 @@ export function Process() {
         {/* ── Timeline ─────────────────────────────────────────────────── */}
         <div ref={timelineRef} className="relative">
           {/* ── Track: faint static guide line ─────────────────────────── */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-foreground/10 -translate-x-1/2 hidden md:block" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-foreground/10 -translate-x-1/2 animate-pulse" />
 
           {/* ── Contrail: warm gradient fill that grows with the indicator ───── */}
           <div
             ref={contrailRef}
-            className="absolute left-1/2 top-0 -translate-x-1/2 hidden md:block origin-top pointer-events-none rounded-full"
+            className="absolute left-6 md:left-1/2 top-0 -translate-x-1/2 origin-top pointer-events-none rounded-full"
             style={{
               width: "3px",
               height: 0,
@@ -187,7 +188,7 @@ export function Process() {
           <div
             ref={indicatorRef}
             aria-hidden
-            className="absolute left-1/2 top-0 z-20 hidden md:block pointer-events-none flex items-center justify-center text-coral"
+            className="absolute left-6 md:left-1/2 top-0 z-20 pointer-events-none flex items-center justify-center text-coral"
             style={{
               width: 32,
               height: 32,
@@ -213,7 +214,7 @@ export function Process() {
                   style={{ minHeight: "200px" }}
                 >
                   {/* ── Centre dot ──────────────────────────────────── */}
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden md:block">
+                  <div className="absolute left-6 md:left-1/2 top-[52px] md:top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                     <div
                       className="proc-dot h-4 w-4 rounded-full ring-4 ring-background shadow-lg"
                       style={{
@@ -225,11 +226,11 @@ export function Process() {
 
                   {/* ── Content cell ─────────────────────────────────── */}
                   <div
-                    className={`proc-card px-4 md:px-12 py-10 ${isLeft ? "md:text-right" : "md:order-last"}`}
+                    className={`proc-card pl-14 pr-6 md:px-12 py-8 md:py-10 ${isLeft ? "md:text-right" : "md:order-last"}`}
                   >
                     {/* Thin accent rule — replaces numbering system */}
                     <div
-                      className={`mb-4 h-0.5 w-10 rounded-full ${isLeft ? "md:ml-auto" : ""}`}
+                      className={`mb-4 h-0.5 w-10 rounded-full ${isLeft ? "md:ml-auto" : "ml-0"}`}
                       style={{ background: s.accent }}
                     />
 

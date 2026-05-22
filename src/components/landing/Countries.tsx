@@ -242,6 +242,7 @@ for (const c of countries) {
 
 export function Countries() {
   const [hovered, setHovered] = useState<Country | null>(null);
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(countries[0]);
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   return (
@@ -249,15 +250,38 @@ export function Countries() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
-            <span className="text-xs uppercase tracking-[0.3em] text-coral">Where you can go</span>
+            <span className="text-xs uppercase tracking-[0.3em] text-coral font-semibold">Where you can go</span>
             <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl leading-tight">
               31 destinations. <span className="italic text-gradient-sky">One runway.</span>
             </h2>
           </div>
           <p className="text-foreground/60 max-w-sm text-sm">
-            Hover a highlighted country to preview the destination — from Baltic forests to tropical
+            Select or hover a highlighted country to preview the destination — from Baltic forests to tropical
             islands.
           </p>
+        </div>
+
+        {/* Mobile Horizontal Country Selector */}
+        <div className="md:hidden overflow-x-auto scrollbar-none py-2 flex gap-2 mb-6">
+          {countries.map((c) => {
+            const isSelected = selectedCountry?.name === c.name;
+            return (
+              <button
+                key={c.name}
+                onClick={() => {
+                  setSelectedCountry(c);
+                  setHovered(c);
+                }}
+                className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold tracking-wide border transition-all duration-200 ${
+                  isSelected
+                    ? "bg-gradient-sunset text-foreground border-transparent shadow-[var(--shadow-soft)]"
+                    : "glass border-border/40 text-foreground/80 hover:text-foreground hover:bg-card/50"
+                }`}
+              >
+                {c.name}
+              </button>
+            );
+          })}
         </div>
 
         <div className="mx-auto max-w-4xl w-full">
@@ -281,12 +305,18 @@ export function Countries() {
                     geographies.map((geo: any) => {
                       const name = (geo.properties.name || "").toLowerCase();
                       const match = countryByName.get(name);
-                      const isActive = hovered?.name === match?.name;
+                      const isActive = hovered?.name === match?.name || selectedCountry?.name === match?.name;
                       return (
                         <Geography
                           key={geo.rsmKey}
                           geography={geo}
                           onMouseEnter={() => match && setHovered(match)}
+                          onClick={() => {
+                            if (match) {
+                              setSelectedCountry(match);
+                              setHovered(match);
+                            }
+                          }}
                           style={{
                             default: {
                               fill: match
@@ -314,9 +344,9 @@ export function Countries() {
               </ZoomableGroup>
             </ComposableMap>
 
-            {/* Floating popup card */}
+            {/* Floating popup card - desktop only */}
             <div
-              className={`pointer-events-none absolute z-10 w-56 rounded-xl border border-border bg-card shadow-lg overflow-hidden transition-all duration-200 ease-out ${
+              className={`hidden md:block pointer-events-none absolute z-10 w-56 rounded-xl border border-border bg-card shadow-lg overflow-hidden transition-all duration-200 ease-out ${
                 hovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
               }`}
               style={{
@@ -347,6 +377,37 @@ export function Countries() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Static Details Card */}
+        {selectedCountry && (
+          <div className="md:hidden mt-6 glass rounded-2xl overflow-hidden border border-border/40 shadow-lg animate-fade-in">
+            <div className="flex flex-col sm:flex-row">
+              <img
+                src={selectedCountry.image}
+                alt={selectedCountry.name}
+                className="w-full sm:w-1/3 h-44 sm:h-auto object-cover"
+                loading="lazy"
+              />
+              <div className="p-5 flex-1">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-coral font-semibold">
+                  Destination Capital: {selectedCountry.capital}
+                </span>
+                <h3 className="font-display text-xl mt-1.5">{selectedCountry.name}</h3>
+                <p className="mt-2.5 text-sm text-foreground/75 leading-relaxed">
+                  {selectedCountry.blurb}
+                </p>
+                <div className="mt-4 pt-4 border-t border-border/30 flex items-center justify-between">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-mint hover:underline"
+                  >
+                    Discuss {selectedCountry.name} Pathway &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -182,7 +182,7 @@ export function Services() {
           {services.map((s) => (
             <div
               key={s.n}
-              className="svc-card group relative rounded-2xl p-6 cursor-default transition-all duration-300"
+              className="svc-card group relative rounded-2xl p-5 sm:p-6 cursor-default transition-all duration-300"
               style={{
                 background: "rgba(255,255,255,0.24)",
                 backdropFilter: "blur(20px) saturate(1.5) brightness(1.05)",

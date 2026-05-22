@@ -79,7 +79,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.9 }}
-          className="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-[8.5rem] font-semibold leading-[0.98] max-w-5xl text-foreground"
+          className="mt-6 font-display text-[2.75rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-[8.5rem] font-semibold leading-[1.05] sm:leading-[0.98] tracking-tight max-w-5xl text-foreground"
         >
           Your Runway to <span className="italic text-gradient-mint">Success</span>
         </motion.h1>
@@ -88,7 +88,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-7 max-w-xl text-base sm:text-lg text-foreground/75"
+          className="mt-7 max-w-xl text-base sm:text-lg text-foreground/75 px-2 sm:px-0"
         >
           Ethical, transparent guidance for students charting their academic journey across Europe —
           from first counselling to landing day.
@@ -98,7 +98,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 0.6 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4 px-4"
         >
           <a
             href="#contact"
@@ -128,7 +128,7 @@ export function Hero() {
             ? undefined
             : { y: planeY, x: planeX, rotate: planeRot, scale: planeScale, willChange: "transform" }
         }
-        className="pointer-events-none select-none absolute z-30 left-[6%] sm:left-[10%] bottom-[28%] w-[55%] sm:w-[42%] md:w-[36%] max-w-[640px] drop-shadow-[0_30px_40px_rgba(20,30,80,0.35)]"
+        className="pointer-events-none select-none absolute z-30 left-[6%] sm:left-[10%] bottom-[22%] sm:bottom-[28%] w-[76%] xs:w-[66%] sm:w-[48%] md:w-[36%] max-w-[640px] drop-shadow-[0_30px_40px_rgba(20,30,80,0.35)]"
       />
 
       {/* Soft fade to next section */}

@@ -64,7 +64,7 @@ export function About() {
         </div>
 
         {/* Layered imagery with parallax */}
-        <div className="relative h-[520px] sm:h-[600px]">
+        <div className="relative h-[360px] xs:h-[420px] sm:h-[520px] md:h-[600px]">
           <motion.div
             style={reduce ? undefined : { y: yA }}
             className="absolute top-0 right-0 w-[78%] h-[70%] rounded-3xl overflow-hidden shadow-[var(--shadow-soft)]"

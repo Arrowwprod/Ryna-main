@@ -25,7 +25,7 @@ export function FloatingCTA() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.6 }}
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-none"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3 pointer-events-none"
     >
       {/* Speech bubble teaser */}
       <motion.div
@@ -58,7 +58,7 @@ export function FloatingCTA() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="flex items-center gap-2 rounded-full glass-strong p-2 shadow-2xl shadow-coral/5 pointer-events-auto border border-foreground/5"
+        className="flex items-center gap-1 sm:gap-2 rounded-full glass-strong p-1.5 sm:p-2 shadow-2xl shadow-coral/5 pointer-events-auto border border-foreground/5"
       >
         {/* WhatsApp attention-seeking pulse button */}
         <a
@@ -66,7 +66,7 @@ export function FloatingCTA() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
-          className="relative inline-flex items-center gap-2 rounded-full bg-gradient-sunset px-5 py-2.5 text-sm font-semibold text-foreground hover:scale-105 active:scale-95 transition-all duration-300"
+          className="relative inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-gradient-sunset px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-foreground hover:scale-105 active:scale-95 transition-all duration-300"
         >
           {/* Wave Ripple Ring 1 */}
           <motion.span
@@ -104,9 +104,9 @@ export function FloatingCTA() {
         <a
           href={`tel:${PHONE_NUMBER}`}
           aria-label="Call Ryna International"
-          className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-foreground/10 active:scale-95 transition-all duration-300"
+          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-foreground hover:bg-foreground/10 active:scale-95 transition-all duration-300"
         >
-          <Phone size={14} className="text-foreground/65 shrink-0" />
+          <Phone size={12} className="text-foreground/65 shrink-0 sm:w-3.5 sm:h-3.5" />
           <span>Call</span>
         </a>
       </motion.div>
