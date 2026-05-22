@@ -12,7 +12,7 @@ import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-const airportBgImage = "https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1600&q=70";
+import airportBgImage from "@/assets/nejc-soklic-f-vOig-sJzc-unsplash.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
