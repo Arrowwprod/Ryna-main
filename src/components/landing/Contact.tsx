@@ -1,22 +1,23 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { z } from "zod";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2, Mail, Send } from "lucide-react";
 import footerBgImage from "@/assets/footer  image/abderrahmane-meftah-ZI0nhVLpAKY-unsplash.jpg";
 
-const waitlistSchema = z.object({
-  email: z.string().trim().email("Enter a valid email").max(255),
-});
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name required").max(100),
-  email: z.string().trim().email("Enter a valid email").max(255),
-  phone: z.string().trim().max(30).optional().or(z.literal("")),
-  country: z.string().trim().max(80).optional().or(z.literal("")),
-  message: z.string().trim().min(5, "Tell us a bit more").max(2000),
-});
+/**
+ * Submits a form to Netlify Forms via AJAX (fetch).
+ * Netlify auto-detects forms with data-netlify="true" during the deploy crawl.
+ * The hidden "form-name" field tells Netlify which form is being submitted.
+ */
+async function submitToNetlify(formName: string, data: Record<string, string>) {
+  const body = new URLSearchParams({ "form-name": formName, ...data });
+  const res = await fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: body.toString(),
+  });
+  if (!res.ok) throw new Error("Network error");
+}
 
 export function Contact() {
   const [waitEmail, setWaitEmail] = useState("");
@@ -26,44 +27,53 @@ export function Contact() {
 
   async function joinWaitlist(e: React.FormEvent) {
     e.preventDefault();
-    const parsed = waitlistSchema.safeParse({ email: waitEmail });
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0].message);
+    const trimmed = waitEmail.trim();
+    if (!trimmed) {
+      toast.error("Enter a valid email");
       return;
     }
     setWaitLoading(true);
-    const { error } = await supabase.from("waitlist").insert({ email: parsed.data.email });
-    setWaitLoading(false);
-    if (error) {
+    try {
+      await submitToNetlify("waitlist", { email: trimmed });
+      setWaitEmail("");
+      toast.success("You're on the list! We'll be in touch.");
+    } catch {
       toast.error("Could not join waitlist. Please try again.");
-      return;
+    } finally {
+      setWaitLoading(false);
     }
-    setWaitEmail("");
-    toast.success("You're on the list! We'll be in touch.");
   }
 
   async function submitContact(e: React.FormEvent) {
     e.preventDefault();
-    const parsed = contactSchema.safeParse(form);
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0].message);
+    if (!form.name.trim()) {
+      toast.error("Name is required");
+      return;
+    }
+    if (!form.email.trim()) {
+      toast.error("Enter a valid email");
+      return;
+    }
+    if (form.message.trim().length < 5) {
+      toast.error("Tell us a bit more");
       return;
     }
     setLoading(true);
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: parsed.data.name,
-      email: parsed.data.email,
-      phone: parsed.data.phone || null,
-      country: parsed.data.country || null,
-      message: parsed.data.message,
-    });
-    setLoading(false);
-    if (error) {
+    try {
+      await submitToNetlify("contact", {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        country: form.country.trim(),
+        message: form.message.trim(),
+      });
+      setForm({ name: "", email: "", phone: "", country: "", message: "" });
+      toast.success("Message sent. We'll respond shortly.");
+    } catch {
       toast.error("Could not send message. Please try again.");
-      return;
+    } finally {
+      setLoading(false);
     }
-    setForm({ name: "", email: "", phone: "", country: "", message: "" });
-    toast.success("Message sent. We'll respond shortly.");
   }
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -123,11 +133,23 @@ export function Contact() {
           <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[420px] h-[420px] rounded-full bg-gradient-to-tr from-sunset/45 to-coral/30 blur-[110px] pointer-events-none opacity-20" />
 
           <div className="relative z-10 grid lg:grid-cols-5 gap-6">
-            {/* Waitlist */}
+            {/* Waitlist — Netlify Form */}
             <form
+              name="waitlist"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               onSubmit={joinWaitlist}
               className="lg:col-span-2 glass-liquid rounded-3xl p-8 flex flex-col"
             >
+              {/* Hidden fields for Netlify detection */}
+              <input type="hidden" name="form-name" value="waitlist" />
+              <p className="hidden">
+                <label>
+                  Don't fill this out: <input name="bot-field" />
+                </label>
+              </p>
+
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--gradient-mint)] text-primary-foreground">
                 <Mail size={20} />
               </div>
@@ -139,6 +161,7 @@ export function Contact() {
               <div className="mt-auto pt-8">
                 <input
                   type="email"
+                  name="email"
                   required
                   value={waitEmail}
                   onChange={(e) => setWaitEmail(e.target.value)}
@@ -160,8 +183,23 @@ export function Contact() {
               </div>
             </form>
 
-            {/* Contact form */}
-            <form onSubmit={submitContact} className="lg:col-span-3 glass-liquid rounded-3xl p-8">
+            {/* Contact form — Netlify Form */}
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={submitContact}
+              className="lg:col-span-3 glass-liquid rounded-3xl p-8"
+            >
+              {/* Hidden fields for Netlify detection */}
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>
+                  Don't fill this out: <input name="bot-field" />
+                </label>
+              </p>
+
               <h3 className="font-display text-2xl">Send us a message</h3>
               <p className="mt-1 text-sm text-foreground/75 font-body leading-relaxed">
                 Tell us your goals — we'll outline next steps.
@@ -169,12 +207,14 @@ export function Contact() {
               <div className="mt-6 grid sm:grid-cols-2 gap-4">
                 <Field
                   label="Name"
+                  name="name"
                   value={form.name}
                   onChange={(v) => setForm({ ...form, name: v })}
                   required
                 />
                 <Field
                   label="Email"
+                  name="email"
                   type="email"
                   value={form.email}
                   onChange={(v) => setForm({ ...form, email: v })}
@@ -182,11 +222,13 @@ export function Contact() {
                 />
                 <Field
                   label="Phone (optional)"
+                  name="phone"
                   value={form.phone}
                   onChange={(v) => setForm({ ...form, phone: v })}
                 />
                 <Field
                   label="Country of Interest"
+                  name="country"
                   value={form.country}
                   onChange={(v) => setForm({ ...form, country: v })}
                   placeholder="e.g. Germany, Italy"
@@ -197,6 +239,7 @@ export function Contact() {
                   Message
                 </label>
                 <textarea
+                  name="message"
                   required
                   rows={4}
                   value={form.message}
@@ -223,6 +266,7 @@ export function Contact() {
 
 function Field({
   label,
+  name,
   value,
   onChange,
   type = "text",
@@ -230,6 +274,7 @@ function Field({
   placeholder,
 }: {
   label: string;
+  name: string;
   value: string;
   onChange: (v: string) => void;
   type?: string;
@@ -243,6 +288,7 @@ function Field({
       </label>
       <input
         type={type}
+        name={name}
         required={required}
         value={value}
         placeholder={placeholder}
