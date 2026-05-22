@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { toast } from "sonner";
 import { Loader2, Mail, Send } from "lucide-react";
-import footerBgImage from "@/assets/footer  image/abderrahmane-meftah-ZI0nhVLpAKY-unsplash.jpg";
+const footerBgImage = "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=70";
 
 /**
  * Submits a form to Netlify Forms via AJAX (fetch).
