@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { Globe, ShieldCheck, Compass } from "lucide-react";
 
 const IMG_PRIMARY =
   "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1400&q=70";
@@ -46,64 +45,51 @@ export function About() {
             academic pathway and confidently begin their international education journey.
           </p>
 
-          <div className="mt-12 grid sm:grid-cols-3 gap-4">
+          <div className="mt-16 grid sm:grid-cols-3 gap-8 md:gap-12">
             {[
               {
-                icon: <Globe className="text-sky shrink-0 animate-[spin_40s_linear_infinite]" size={20} />,
-                title: "15+ Countries",
-                label: "European Reach",
-                desc: "Curated programs in Italy, Germany, France, and top destinations.",
-                color: "rgba(56,189,248,0.12)",
+                num: "01",
+                title: "European Reach",
+                subtitle: "15+ Countries",
+                desc: "Curated academic pathways spanning Germany, Italy, France, and Europe’s finest destinations.",
               },
               {
-                icon: <ShieldCheck className="text-sunset shrink-0" size={20} />,
-                title: "100%",
-                label: "Transparent Process",
-                desc: "Ethical counseling, zero hidden charges, complete document visibility.",
-                color: "rgba(245,158,11,0.12)",
+                num: "02",
+                title: "Transparent Process",
+                subtitle: "100% Ethical",
+                desc: "Honest counseling and zero hidden charges, ensuring complete document and portal visibility.",
               },
               {
-                icon: <Compass className="text-coral shrink-0 group-hover:rotate-45 transition-transform duration-500" size={20} />,
-                title: "End-to-End",
-                label: "Personal Support",
-                desc: "From initial applications and visas to pre-departure and local stays.",
-                color: "rgba(244,63,94,0.12)",
+                num: "03",
+                title: "Personal Support",
+                subtitle: "End-to-End",
+                desc: "Providing dedicated guidance from initial application and visa to accommodation and local stay.",
               },
             ].map((s, idx) => (
               <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 16 }}
+                key={s.title}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="group relative rounded-2xl border border-border/30 glass p-5 flex flex-col justify-between shadow-soft hover:shadow-glow transition-all duration-350 cursor-pointer overflow-hidden"
+                transition={{ delay: idx * 0.15, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative flex flex-col pt-8 border-t border-foreground/10 hover:border-coral/40 transition-colors duration-500 cursor-default"
               >
-                {/* Refraction radial glow on hover */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle at 10% 10%, ${s.color}, transparent 60%)`
-                  }}
-                />
+                {/* Minimal elegant accent border on hover */}
+                <div className="absolute top-0 left-0 w-0 h-[1.5px] bg-coral group-hover:w-full transition-all duration-500 ease-out" />
+                
+                {/* Premium Serif Number */}
+                <span className="font-display italic font-light text-5xl text-foreground/15 group-hover:text-coral/30 group-hover:-translate-y-1 transition-all duration-500 select-none">
+                  {s.num}
+                </span>
 
-                <div className="relative z-10 flex items-center justify-between w-full">
-                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-foreground/5 text-foreground/80 group-hover:bg-foreground/10 group-hover:text-foreground transition-all duration-300">
-                    {s.icon}
-                  </div>
-                  <span className="text-[10px] uppercase tracking-wider font-semibold text-foreground/45 group-hover:text-foreground/60 transition-colors duration-300">
-                    Pillar 0{idx + 1}
+                <div className="mt-4">
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-coral/80">
+                    {s.subtitle}
                   </span>
-                </div>
-
-                <div className="relative z-10 mt-6">
-                  <div className="font-display text-2xl font-bold tracking-tight text-foreground">
+                  <h3 className="mt-2 font-display text-xl font-medium tracking-tight text-foreground/90 group-hover:text-foreground transition-colors duration-300">
                     {s.title}
-                  </div>
-                  <div className="text-xs font-semibold text-foreground/85 mt-1 tracking-wide">
-                    {s.label}
-                  </div>
-                  <p className="text-[11px] leading-relaxed text-foreground/60 mt-2 font-body group-hover:text-foreground/75 transition-colors duration-300">
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-relaxed text-foreground/65 font-body font-light group-hover:text-foreground/80 transition-colors duration-500">
                     {s.desc}
                   </p>
                 </div>
