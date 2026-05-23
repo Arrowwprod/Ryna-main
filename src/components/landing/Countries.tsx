@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 
 type Country = {
@@ -245,6 +245,14 @@ export function Countries() {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(countries[0]);
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
+  useEffect(() => {
+    // Preload all country images in the background so they appear instantly
+    countries.forEach((c) => {
+      const img = new Image();
+      img.src = c.image;
+    });
+  }, []);
+
   return (
     <section id="countries" className="relative py-20">
       <div className="mx-auto max-w-7xl px-6">
@@ -297,9 +305,9 @@ export function Countries() {
             <ComposableMap
               projection="geoMercator"
               projectionConfig={{ scale: 130 }}
-              style={{ width: "100%", height: "auto" }}
+              style={{ width: "100%", height: "auto", touchAction: "pan-y" }}
             >
-              <ZoomableGroup center={[20, 30]} zoom={1}>
+              <ZoomableGroup center={[20, 30]} zoom={1} disablePanning disableZooming>
                 <Geographies geography={GEO_URL}>
                   {({ geographies }: { geographies: any[] }) =>
                     geographies.map((geo: any) => {
@@ -360,8 +368,7 @@ export function Countries() {
                   <img
                     src={hovered.image}
                     alt={hovered.name}
-                    className="w-full h-24 object-cover"
-                    loading="lazy"
+                    className="w-full h-24 object-cover bg-foreground/5"
                   />
                   <div className="p-3">
                     <div className="font-display text-base leading-tight">{hovered.name}</div>
@@ -385,8 +392,7 @@ export function Countries() {
               <img
                 src={selectedCountry.image}
                 alt={selectedCountry.name}
-                className="w-full sm:w-1/3 h-44 sm:h-auto object-cover"
-                loading="lazy"
+                className="w-full sm:w-1/3 h-44 sm:h-auto object-cover bg-foreground/5"
               />
               <div className="p-5 flex-1">
                 <span className="text-[10px] uppercase tracking-[0.2em] text-coral font-semibold">
