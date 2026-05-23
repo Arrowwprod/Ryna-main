@@ -286,8 +286,23 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl mt-16 pt-6 border-t border-border flex flex-col sm:flex-row justify-between gap-3 text-xs text-foreground/65">
+      <div className="relative z-10 mx-auto max-w-7xl mt-16 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-foreground/65">
         <p>© {new Date().getFullYear()} Ryna International LLP. All rights reserved.</p>
+        
+        {/* Classy Agency Credit */}
+        <div className="flex items-center gap-1 text-[11px] font-sans tracking-wider text-foreground/60 select-none">
+          <span>Developed by</span>
+          <a
+            href="https://arrowwproductions.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-foreground/80 hover:text-coral transition-colors duration-350 flex items-center gap-1 group"
+          >
+            Arroww Productions
+            <span className="h-1.5 w-1.5 rounded-full bg-coral/85 group-hover:bg-coral group-hover:scale-125 transition-all duration-350 shadow-[0_0_8px_rgba(255,110,40,0.5)]" />
+          </a>
+        </div>
+
         <div className="flex gap-5">
           <a href="#" className="hover:text-coral">
             Privacy
