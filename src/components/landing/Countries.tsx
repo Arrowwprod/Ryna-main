@@ -76,14 +76,14 @@ const countries: Country[] = [
     capital: "Sofia",
     blurb: "Affordable EU education, growing tech scene.",
     image:
-      "https://images.unsplash.com/photo-1656864644512-c468caf75ffe?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?auto=format&fit=crop&w=600&q=70",
   },
   {
     name: "Lithuania",
     capital: "Vilnius",
     blurb: "Baltic charm, modern campuses, low costs.",
     image:
-      "https://images.unsplash.com/photo-1561579137-fb6acd45ad7b?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1549447437-14227163f966?auto=format&fit=crop&w=600&q=70",
   },
   {
     name: "Sweden",
@@ -174,7 +174,7 @@ const countries: Country[] = [
     capital: "Warsaw",
     blurb: "Modern universities, vibrant culture, low living costs.",
     image:
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1574068367942-835b306331c5?auto=format&fit=crop&w=600&q=70",
   },
   {
     name: "Kazakhstan",
