@@ -174,7 +174,7 @@ const countries: Country[] = [
     capital: "Warsaw",
     blurb: "Modern universities, vibrant culture, low living costs.",
     image:
-      "https://images.unsplash.com/photo-1512076244538-654dbb83e602?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=70",
   },
   {
     name: "Kazakhstan",
@@ -304,52 +304,50 @@ export function Countries() {
           >
             <ComposableMap
               projection="geoMercator"
-              projectionConfig={{ scale: 130 }}
-              style={{ width: "100%", height: "auto", touchAction: "pan-y" }}
+              projectionConfig={{ scale: 130, center: [20, 30] }}
+              style={{ width: "100%", height: "auto" }}
             >
-              <ZoomableGroup center={[20, 30]} zoom={1} disablePanning disableZooming>
-                <Geographies geography={GEO_URL}>
-                  {({ geographies }: { geographies: any[] }) =>
-                    geographies.map((geo: any) => {
-                      const name = (geo.properties.name || "").toLowerCase();
-                      const match = countryByName.get(name);
-                      const isActive = hovered?.name === match?.name || selectedCountry?.name === match?.name;
-                      return (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          onMouseEnter={() => match && setHovered(match)}
-                          onClick={() => {
-                            if (match) {
-                              setSelectedCountry(match);
-                              setHovered(match);
-                            }
-                          }}
-                          style={{
-                            default: {
-                              fill: match
-                                ? isActive
-                                  ? "oklch(0.72 0.18 30)" // coral
-                                  : "oklch(0.55 0.16 235)" // sky
-                                : "oklch(0.94 0.018 75)",
-                              stroke: "oklch(0.985 0.012 80)",
-                              strokeWidth: 0.5,
-                              outline: "none",
-                              transition: "fill 200ms ease",
-                              cursor: match ? "pointer" : "default",
-                            },
-                            hover: {
-                              fill: match ? "oklch(0.72 0.18 30)" : "oklch(0.9 0.02 75)",
-                              outline: "none",
-                            },
-                            pressed: { fill: "oklch(0.72 0.18 30)", outline: "none" },
-                          }}
-                        />
-                      );
-                    })
-                  }
-                </Geographies>
-              </ZoomableGroup>
+              <Geographies geography={GEO_URL}>
+                {({ geographies }: { geographies: any[] }) =>
+                  geographies.map((geo: any) => {
+                    const name = (geo.properties.name || "").toLowerCase();
+                    const match = countryByName.get(name);
+                    const isActive = hovered?.name === match?.name || selectedCountry?.name === match?.name;
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        onMouseEnter={() => match && setHovered(match)}
+                        onClick={() => {
+                          if (match) {
+                            setSelectedCountry(match);
+                            setHovered(match);
+                          }
+                        }}
+                        style={{
+                          default: {
+                            fill: match
+                              ? isActive
+                                ? "oklch(0.72 0.18 30)" // coral
+                                : "oklch(0.55 0.16 235)" // sky
+                              : "oklch(0.94 0.018 75)",
+                            stroke: "oklch(0.985 0.012 80)",
+                            strokeWidth: 0.5,
+                            outline: "none",
+                            transition: "fill 200ms ease",
+                            cursor: match ? "pointer" : "default",
+                          },
+                          hover: {
+                            fill: match ? "oklch(0.72 0.18 30)" : "oklch(0.9 0.02 75)",
+                            outline: "none",
+                          },
+                          pressed: { fill: "oklch(0.72 0.18 30)", outline: "none" },
+                        }}
+                      />
+                    );
+                  })
+                }
+              </Geographies>
             </ComposableMap>
 
             {/* Floating popup card - desktop only */}
