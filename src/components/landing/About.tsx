@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 const IMG_PRIMARY =
-  "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1400&q=70";
+  "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?fm=webp&fit=crop&w=800&q=65";
 const IMG_SECONDARY =
-  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=900&q=70";
+  "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?fm=webp&fit=crop&w=500&q=65";
 
 export function About() {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,7 +17,7 @@ export function About() {
     <section id="about" ref={ref} className="relative py-32 sm:py-40 px-6 overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=60"
+          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?fm=webp&fit=crop&w=1000&q=40"
           alt=""
           loading="lazy"
           decoding="async"

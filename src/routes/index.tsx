@@ -1,5 +1,9 @@
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
+import { useLenis } from "@/components/LenisProvider";
+import { Preloader } from "@/components/landing/Preloader";
 import { Navbar } from "@/components/landing/Navbar";
 import { FloatingCTA } from "@/components/landing/FloatingCTA";
 import { Hero } from "@/components/landing/Hero";
@@ -19,8 +23,28 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const lenis = useLenis();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (loading) {
+      lenis?.stop();
+      document.body.style.overflow = "hidden";
+    } else {
+      lenis?.start();
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [loading, lenis]);
+
   return (
-    <main className="relative bg-background text-foreground overflow-x-clip">
+    <>
+      <AnimatePresence mode="wait">
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+      <main className="relative bg-background text-foreground overflow-x-clip">
       <Navbar />
       <FloatingCTA />
       <Toaster position="top-center" richColors />
@@ -65,5 +89,6 @@ function Index() {
         <Footer />
       </div>
     </main>
+    </>
   );
 }

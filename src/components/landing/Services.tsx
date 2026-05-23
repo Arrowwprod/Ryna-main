@@ -57,7 +57,7 @@ const services = [
 ];
 
 const BG_IMG =
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2000&q=70";
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?fm=webp&fit=crop&w=1200&q=50";
 
 export function Services() {
   const sectionRef = useRef<HTMLDivElement>(null);

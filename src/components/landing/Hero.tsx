@@ -4,7 +4,7 @@ import { ArrowRight, Plane } from "lucide-react";
 import airplane from "@/assets/airplane.png";
 
 const SKY =
-  "https://images.unsplash.com/photo-1601297183305-6df142704ea2?auto=format&fit=crop&w=2000&q=70";
+  "https://images.unsplash.com/photo-1601297183305-6df142704ea2?fm=webp&fit=crop&w=1400&q=65";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);

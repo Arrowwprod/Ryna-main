@@ -198,7 +198,7 @@ export function Team() {
       {/* Subtle bg texture */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=60"
+          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?fm=webp&fit=crop&w=1000&q=40"
           alt=""
           loading="lazy"
           decoding="async"

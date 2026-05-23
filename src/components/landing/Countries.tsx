@@ -19,21 +19,21 @@ const countries: Country[] = [
     capital: "London",
     blurb: "World-class universities, vibrant student cities.",
     image:
-      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Slovenia",
     capital: "Ljubljana",
     blurb: "Alpine campuses, affordable living, EU access.",
     image:
-      "https://images.unsplash.com/photo-1601280081951-7d2c668d2972?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1527631746610-bca00a040d60?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Croatia",
     capital: "Zagreb",
     blurb: "Adriatic coast, growing English-taught programs.",
     image:
-      "https://images.unsplash.com/photo-1555990538-32b58a44b1ed?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Czechia",
@@ -41,196 +41,196 @@ const countries: Country[] = [
     capital: "Prague",
     blurb: "Historic Prague, strong STEM faculties.",
     image:
-      "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1541849546-216549ae216d?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Malta",
     capital: "Valletta",
     blurb: "English-speaking island, Mediterranean climate.",
     image:
-      "https://images.unsplash.com/photo-1601641254003-3a8fa6bbab3a?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1518005020951-eccb494ad742?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Spain",
     capital: "Madrid",
     blurb: "Diverse cities, vibrant culture, EU degrees.",
     image:
-      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1543783207-ec64e4d95325?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Denmark",
     capital: "Copenhagen",
     blurb: "Design-led education, high quality of life.",
     image:
-      "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Germany",
     capital: "Berlin",
     blurb: "Tuition-free public universities, research powerhouse.",
     image:
-      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Bulgaria",
     capital: "Sofia",
     blurb: "Affordable EU education, growing tech scene.",
     image:
-      "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Lithuania",
     capital: "Vilnius",
     blurb: "Baltic charm, modern campuses, low costs.",
     image:
-      "https://images.unsplash.com/photo-1549447437-14227163f966?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1561571994-3c61c554181a?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Sweden",
     capital: "Stockholm",
     blurb: "Innovation hub, sustainability focus.",
     image:
-      "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Latvia",
     capital: "Riga",
     blurb: "Art-nouveau Riga, English-taught degrees.",
     image:
-      "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Austria",
     capital: "Vienna",
     blurb: "Vienna's heritage, top music & medical schools.",
     image:
-      "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1516550893923-42d28e5677af?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Finland",
     capital: "Helsinki",
     blurb: "Education leader, free thinking, nature.",
     image:
-      "https://images.unsplash.com/photo-1559682468-a6a29e7d9517?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1559682468-a6a29e7d9517?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Slovakia",
     capital: "Bratislava",
     blurb: "Central European hub, affordable studies.",
     image:
-      "https://images.unsplash.com/photo-1577132498849-90f6e1b1ca57?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1562095241-8c6714fd4178?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Mauritius",
     capital: "Port Louis",
     blurb: "Tropical island campuses, bilingual environment.",
     image:
-      "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Malaysia",
     capital: "Kuala Lumpur",
     blurb: "Asia hub, affordable international branches.",
     image:
-      "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "France",
     capital: "Paris",
     blurb: "Renowned culinary arts, fashion, and business schools.",
     image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Greece",
     capital: "Athens",
     blurb: "Classical heritage, medical and archaeological studies.",
     image:
-      "https://images.unsplash.com/photo-1503152394-c571994fd383?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1503152394-c571994fd383?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Hungary",
     capital: "Budapest",
     blurb: "Stunning architecture, affordable medical degrees.",
     image:
-      "https://images.unsplash.com/photo-1518884968853-29497d3910c2?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Italy",
     capital: "Rome",
     blurb: "World-class design, architecture, and art academies.",
     image:
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Netherlands",
     capital: "Amsterdam",
     blurb: "Highly ranked English programs, research leadership.",
     image:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Poland",
     capital: "Warsaw",
     blurb: "Modern universities, vibrant culture, low living costs.",
     image:
-      "https://images.unsplash.com/photo-1574068367942-835b306331c5?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1568849676085-51415703900f?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Kazakhstan",
     capital: "Astana",
     blurb: "Central Asian hub, growing engineering & IT programs.",
     image:
-      "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Japan",
     capital: "Tokyo",
     blurb: "Top-tier tech and research, unique cultural experience.",
     image:
-      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Uzbekistan",
     capital: "Tashkent",
     blurb: "Historic Silk Road campuses, expanding global links.",
     image:
-      "https://images.unsplash.com/photo-1616088288599-281b9549f2b8?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1528127269322-539801943592?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Singapore",
     capital: "Singapore",
     blurb: "Global financial hub, world-class university systems.",
     image:
-      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Georgia",
     capital: "Tbilisi",
     blurb: "Bridging Europe and Asia, popular for medical studies.",
     image:
-      "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Albania",
     capital: "Tirana",
     blurb: "Mediterranean coast, affordable European education.",
     image:
-      "https://images.unsplash.com/photo-1580997189473-b1d7d2427ba6?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Canada",
     capital: "Ottawa",
     blurb: "Diverse campuses, excellent post-graduation options.",
     image:
-      "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?fm=webp&fit=crop&w=400&q=50",
   },
   {
     name: "Switzerland",
     capital: "Bern",
     blurb: "World-renowned hospitality, banking, and science hubs.",
     image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=70",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?fm=webp&fit=crop&w=400&q=50",
   },
 ];
 
@@ -246,11 +246,14 @@ export function Countries() {
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Preload all country images in the background so they appear instantly
-    countries.forEach((c) => {
-      const img = new Image();
-      img.src = c.image;
-    });
+    // Defer preloading of all country images by 2.5s to avoid network congestion during initial paint
+    const timer = setTimeout(() => {
+      countries.forEach((c) => {
+        const img = new Image();
+        img.src = c.image;
+      });
+    }, 2500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
